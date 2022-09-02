@@ -9,6 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,7 +21,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class User_Accounts {
+public class UserAccounts {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,6 +37,9 @@ public class User_Accounts {
 	@Column(name = "USER_EMAIL")
 	private String userEmail;
 	
+	@Column(name = "USER_PASSWORD")
+	private String UserPassword;
+	
 	@Column(name = "USER_PHNO")
 	private String userPhNo;
 	
@@ -43,24 +49,25 @@ public class User_Accounts {
 	@Column(name = "GENDER")
 	private String Gender;
 	
-	@Column(name = "COUNTRY")
-	private String Country;
+	@Column(name = "COUNTRY_ID")
+	private Integer CountryId;
 	
-	@Column(name = "STATE")
-	private String State;
+	@Column(name = "STATE_ID")
+	private Integer StateId;
 	
-	@Column(name = "CITY")
-	private String City;
+	@Column(name = "CITY_ID")
+	private Integer CityId;
 	
-	@Column(name = "ACTIVE_SW")
-	private char ActiveSw;
+	@Column(name = "ACCOUNT_STATUS")
+	private char AccountStatus;
 	
-	@Column(name = "CREATED_DATE")
+	@CreationTimestamp
+	@Column(name = "CREATED_DATE", updatable = false)
 	private Date CreatedDate;
 	
-	@Column(name = "UPDATED_DATE")
+	@UpdateTimestamp
+	@Column(name = "UPDATED_DATE", updatable = true, insertable = false)
 	private Date UpdatedDate;
 	
-	@Column(name = "USER_PASSWORD")
-	private String UserPassword;
+	
 }
