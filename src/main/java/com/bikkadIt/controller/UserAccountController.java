@@ -1,25 +1,33 @@
 package com.bikkadIt.controller;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bikkadIt.bindings.LoginForm;
 import com.bikkadIt.bindings.UserRegistrationForm;
-import com.bikkadIt.entities.UserAccounts;
+
 import com.bikkadIt.service.UserServiceI;
 
 @RestController
 public class UserAccountController {
 
+	@Autowired
 	private UserServiceI userServiceI;
 	
-	@PostMapping("/saveUser")
-	public UserAccounts saveUser(@RequestBody UserAccounts userAccounts) {
+	
+	
+	@GetMapping("/login")
+	public ResponseEntity<String> saveUser(@RequestBody LoginForm loginForm) {
 		
-		UserAccounts savedUser = this.userServiceI.SaveUser(userAccounts);
+		String message = userServiceI.loginCheck(loginForm);
 	
 		
-		return savedUser;}
+		return new ResponseEntity<String>(message,HttpStatus.OK)   ;}
 	
 }

@@ -12,16 +12,12 @@ import javax.persistence.Table;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "USER_ACCOUNTS")
+@Table(name = "User_Accounts")
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class UserAccounts {
+public class UserAccount {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,7 +34,7 @@ public class UserAccounts {
 	private String userEmail;
 	
 	@Column(name = "USER_PASSWORD")
-	private String UserPassword;
+	private String userPassword;
 	
 	@Column(name = "USER_PHNO")
 	private String userPhNo;
@@ -47,27 +43,26 @@ public class UserAccounts {
 	private String DOB;
 	
 	@Column(name = "GENDER")
-	private String Gender;
+	private String gender;
 	
 	@Column(name = "COUNTRY_ID")
-	private Integer CountryId;
+	private Integer countryId;
 	
 	@Column(name = "STATE_ID")
-	private Integer StateId;
+	private Integer stateId;
 	
 	@Column(name = "CITY_ID")
-	private Integer CityId;
+	private Integer cityId;
 	
 	@Column(name = "ACCOUNT_STATUS")
-	private char AccountStatus;
+	private String accountStatus;
 	
 	@CreationTimestamp
 	@Column(name = "CREATED_DATE", updatable = false)
-	private Date CreatedDate;
+	private Date createdDate;
 	
 	@UpdateTimestamp
 	@Column(name = "UPDATED_DATE", updatable = true, insertable = false)
-	private Date UpdatedDate;
-	
+	private Date updatedDate;
 	
 }
