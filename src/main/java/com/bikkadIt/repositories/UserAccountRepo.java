@@ -9,4 +9,6 @@ import com.bikkadIt.entities.UserAccount;
 public interface UserAccountRepo extends JpaRepository<UserAccount, Integer> {
 
 	  public UserAccount findByUserEmailAndUserPassword(String userEmail,String userPassword);
+	  
+	  public UserAccount findByUserEmail(String email);
 }

@@ -1,33 +1,31 @@
 package com.bikkadIt.controller;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bikkadIt.bindings.LoginForm;
-import com.bikkadIt.bindings.UserRegistrationForm;
-
+import com.bikkadIt.bindings.UnlockAccountForm;
 import com.bikkadIt.service.UserServiceI;
 
 @RestController
-public class UserAccountController {
+public class UnlockController {
 
 	@Autowired
 	private UserServiceI userServiceI;
 	
 	
-	
-	@GetMapping("/login")
-	public ResponseEntity<String> saveUser(@RequestBody LoginForm loginForm) {
+	@PostMapping("/unlockAccount")
+	public ResponseEntity<String>   unlockAccount(@RequestBody UnlockAccountForm unlockAccountForm) {
 		
-		String message = userServiceI.loginCheck(loginForm);
-	
-		
-		return new ResponseEntity<String>(message,HttpStatus.OK)   ;}
+		boolean result = this.userServiceI.unlockAccount(unlockAccountForm);
+		if(result) {
+			
+			return new ResponseEntity<String>  ("Account is Unlocked",HttpStatus.CREATED);
+		}
+		return new ResponseEntity<String>  ("Account is not Locked",HttpStatus.BAD_REQUEST);
+	}
 	
 }

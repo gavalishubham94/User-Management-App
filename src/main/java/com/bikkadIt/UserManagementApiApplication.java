@@ -16,9 +16,4 @@ public class UserManagementApiApplication {
 		SpringApplication.run(UserManagementApiApplication.class, args);
 	}
 
-	@Bean
-	public ModelMapper modelMapper() {
-		return new ModelMapper();
-		
-	}
 }

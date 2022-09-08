@@ -1,7 +1,10 @@
 server:
   port: 9090
-  
-  
+Spring:  
+    mvc:
+       pathmatch:
+          matching-strategy: ant-path-matcher   
+    
   
 spring:
   datasource:
@@ -16,3 +19,6 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5Dialect
     show-sql: true
+     
+    
+    

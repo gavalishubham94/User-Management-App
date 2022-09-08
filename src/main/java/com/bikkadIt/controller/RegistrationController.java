@@ -3,10 +3,15 @@ package com.bikkadIt.controller;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bikkadIt.bindings.UserRegistrationForm;
 import com.bikkadIt.service.UserServiceI;
 
 @RestController
@@ -36,6 +41,19 @@ public class RegistrationController {
 		
 		return cities;
 		
+	}
+	
+	
+	@PostMapping("/registration")
+	public ResponseEntity<String> registerUser(@RequestBody UserRegistrationForm userRegistrationForm){
+		
+		boolean result = this.userServiceI.saveUser(userRegistrationForm);
+		
+		if(result) {
+			
+			return new ResponseEntity<String>("Registration Successfull. Account unlocked link sent on your mail",HttpStatus.CREATED);
+		}
+		return new ResponseEntity<String>("Registration failed",HttpStatus.BAD_REQUEST);
 	}
 	
 }
