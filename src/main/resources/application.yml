@@ -19,6 +19,44 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5Dialect
     show-sql: true
+    
+    
+    #Smtp properties
+    
+    mail:
+       default-encoding: UTF-8
+       host: smtp.gmail.com
+       username:
+       password:
+       port: 587
+       properties:
+          mail:
+            smtp:
+              auth: true
+              starttls:
+                 enable: true
+       protocol: smtp
+       test-connection: false          
+    
+app:
+   messages:
+        invalid_Credintials:  Invalid credintials
+        Account_Locked: your accoount is locked
+        Login_Success: Logedin Successfully, welcome to BikkadIT  
+        User_Reg_Email_Subject: Please check your mail to unlock your Account
+        Pass_Recover_email_body: Check your maiul, password is sent to your mail Id
+        Reg_Success: Registration Successfull. Account unlocked link sent on your mail
+        Reg_Failed: Registration failed
+        Acc_Is_Locked: Account is Locked
+        Acc_Is_Unlocked: Account is Unlocked
+      
+        
+        
+        
+    
+    
+    
+    
      
     
     

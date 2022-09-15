@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bikkadIt.bindings.UserRegistrationForm;
+import com.bikkadIt.props.AppConstant;
 import com.bikkadIt.service.UserServiceI;
 
 @RestController
@@ -51,9 +52,9 @@ public class RegistrationController {
 		
 		if(result) {
 			
-			return new ResponseEntity<String>("Registration Successfull. Account unlocked link sent on your mail",HttpStatus.CREATED);
+			return new ResponseEntity<String>(AppConstant.REG_SUCCESS,HttpStatus.CREATED);
 		}
-		return new ResponseEntity<String>("Registration failed",HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<String>(AppConstant.REG_FAILED,HttpStatus.BAD_REQUEST);
 	}
 	
 }
